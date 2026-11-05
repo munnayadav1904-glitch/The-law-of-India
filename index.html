@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Indian Constitution | Learn Constitution</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
+    color: #222;
+}
+
+header {
+    background: #102c54;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+header p {
+    margin-top: 12px;
+    font-size: 16px;
+}
+
+nav {
+    background: #e68a22;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.welcome {
+    text-align: center;
+    padding: 50px 15px;
+    background: linear-gradient(120deg, #102c54, #245b91);
+    color: white;
+}
+
+.welcome h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.welcome p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 15px;
+}
+
+h2 {
+    color: #102c54;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.language-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+button {
+    border: none;
+    padding: 15px;
+    background: #102c54;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #e68a22;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.card p {
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.info {
+    display: none;
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    line-height: 1.8;
+}
+
+.article-box {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#articleList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.article-item {
+    background: #edf2fa;
+    padding: 12px;
+    border-radius: 6px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.article-item:hover {
+    background: #e68a22;
+    color: white;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+footer {
+    background: #102c54;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+@media(max-width:600px) {
+    .language-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    #articleList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>🇮🇳 INDIAN CONSTITUTION</h1>
+
+<p>Know Your Constitution | Know Your Rights</p>
+
+</header>
+
+<nav>
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#articles">Articles</a>
+<a href="#upload">Upload Knowledge</a>
+
+</nav>
+
+
+<!-- WELCOME SECTION -->
+
+<section class="welcome" id="home">
+
+<h2>WELCOME TO INDIAN CONSTITUTION</h2>
+
+<p>
+Welcome to the platform where every Indian citizen
+can learn, understand and explore the Indian Constitution.
+</p>
+
+<p>
+Learn your rights, duties, freedom and responsibilities.
+</p>
+
+</section>
+
+
+<!-- LANGUAGE SECTION -->
+
+<div class="container">
+
+<h2>Choose Your Language</h2>
+
+<div class="language-buttons">
+
+<button onclick="showLanguage('english')">
+Constitution in English
+</button>
+
+<button onclick="showLanguage('hindi')">
+संविधान हिंदी में
+</button>
+
+<button onclick="showLanguage('easyenglish')">
+Constitution in Easy English
+</button>
+
+<button onclick="showLanguage('easyhindi')">
+संविधान आसान हिंदी में
+</button>
+
+</div>
+
+<div class="info" id="languageContent"></div>
+
+</div>
+
+
+<!-- FUNDAMENTAL RIGHTS -->
+
+<div class="container">
+
+<div class="card">
+
+<h2>Fundamental Rights | मौलिक अधिकार</h2>
+
+<p>
+Fundamental Rights are the basic rights guaranteed
+by the Indian Constitution.
+
+These rights protect the freedom, equality and dignity
+of citizens.
+</p>
+
+<br>
+
+<p><b>1.</b> Right to Equality – समानता का अधिकार</p>
+
+<p><b>2.</b> Right to Freedom – स्वतंत्रता का अधिकार</p>
+
+<p><b>3.</b> Right against Exploitation – शोषण के विरुद्ध अधिकार</p>
+
+<p><b>4.</b> Right to Freedom of Religion – धार्मिक स्वतंत्रता का अधिकार</p>
+
+<p><b>5.</b> Cultural and Educational Rights – सांस्कृतिक और शैक्षिक अधिकार</p>
+
+<p><b>6.</b> Right to Constitutional Remedies – संवैधानिक उपचारों का अधिकार</p>
+
+</div>
+
+</div>
+
+
+<!-- ABOUT CONSTITUTION -->
+
+<div class="container" id="about">
+
+<div class="card">
+
+<h2>ABOUT INDIAN CONSTITUTION</h2>
+
+<p>
+The Constitution of India is the supreme law of India.
+It explains how the country is governed and defines
+the powers of the government and the rights and duties
+of citizens.
+</p>
+
+<br>
+
+<p>
+भारत का संविधान हमारे देश का सर्वोच्च कानून है।
+यह बताता है कि देश कैसे चलेगा, सरकार के अधिकार
+क्या होंगे और नागरिकों के अधिकार एवं कर्तव्य क्या होंगे।
+</p>
+
+</div>
+
+
+<!-- HISTORY -->
+
+<div class="card">
+
+<h2>HISTORY OF INDIAN CONSTITUTION</h2>
+
+<p><b>Constitution Drafting Committee Chairman:</b>
+Dr. B. R. Ambedkar</p>
+
+<p><b>Constitution Adopted:</b> 26 November 1949</p>
+
+<p><b>Constitution Implemented:</b> 26 January 1950</p>
+
+<p><b>Time Taken:</b> 2 Years, 11 Months and 18 Days</p>
+
+<p><b>Original Articles:</b> 395</p>
+
+<p><b>Original Parts:</b> 22</p>
+
+<p><b>Original Schedules:</b> 8</p>
+
+<p>
+The Constitution was prepared by the Constituent Assembly.
+Dr. B. R. Ambedkar chaired its Drafting Committee.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- ARTICLES -->
+
+<div class="container" id="articles">
+
+<div class="card">
+
+<h2>EXPLORE CONSTITUTION ARTICLES</h2>
+
+<p>
+Explore the original 395 Articles of the Indian Constitution.
+Select an Article number to learn about it.
+</p>
+
+<br>
+
+<button onclick="showArticles()">
+Explore 395 Articles
+</button>
+
+<div class="article-box" id="articleBox">
+
+<input
+type="number"
+id="searchArticle"
+placeholder="Enter Article Number (1-395)"
+min="1"
+max="395"
+>
+
+<button onclick="findArticle()">Search Article</button>
+
+<div id="articleList"></div>
+
+<div id="articleDetails"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- UPLOAD KNOWLEDGE -->
+
+<div class="container" id="upload">
+
+<div class="card">
+
+<h2>UPLOAD CONSTITUTION KNOWLEDGE</h2>
+
+<p>
+Share your knowledge about the Indian Constitution.
+You can select educational photos and videos.
+</p>
+
+<br>
+
+<form onsubmit="uploadKnowledge(event)">
+
+<input
+type="text"
+id="username"
+placeholder="Enter Your Name"
+required
+>
+
+<textarea
+id="description"
+placeholder="Write something about Constitution..."
+required
+></textarea>
+
+<label><b>Upload Photo or Video:</b></label>
+
+<input
+type="file"
+id="media"
+accept="image/*,video/*"
+required
+>
+
+<button type="submit">
+Upload Constitution Knowledge
+</button>
+
+</form>
+
+<div id="preview"></div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<h3>INDIAN CONSTITUTION</h3>
+
+<p>Learn Your Rights | Respect Your Constitution</p>
+
+<p>Education • Equality • Freedom • Justice</p>
+
+<p>© 2026 Indian Constitution Learning Platform</p>
+
+</footer>
+
+
+<script>
+
+// LANGUAGE SYSTEM
+
+function showLanguage(language) {
+
+let content = document.getElementById("languageContent");
+
+content.style.display = "block";
+
+if(language === "english") {
+
+content.innerHTML = `
+<h3>Indian Constitution</h3>
+<p>The Constitution is the supreme law of India.
+It explains the rights, duties and responsibilities
+of citizens and the powers of government.</p>
+`;
+
+}
+
+else if(language === "hindi") {
+
+content.innerHTML = `
+<h3>भारतीय संविधान</h3>
+<p>संविधान भारत का सर्वोच्च कानून है।
+यह नागरिकों के अधिकारों, कर्तव्यों और सरकार की शक्तियों
+को निर्धारित करता है।</p>
+`;
+
+}
+
+else if(language === "easyenglish") {
+
+content.innerHTML = `
+<h3>Constitution in Easy English</h3>
+<p>The Constitution is a rule book for our country.
+It tells the government how to work and tells people
+about their rights and duties.</p>
+`;
+
+}
+
+else if(language === "easyhindi") {
+
+content.innerHTML = `
+<h3>आसान हिंदी में संविधान</h3>
+<p>संविधान हमारे देश की नियमों की किताब है।
+यह बताता है कि सरकार कैसे काम करेगी और लोगों को
+कौन-कौन से अधिकार मिलेंगे।</p>
+`;
+
+}
+
+}
+
+
+// ARTICLE SYSTEM
+
+function showArticles() {
+
+document.getElementById("articleBox").style.display = "block";
+
+let list = document.getElementById("articleList");
+
+list.innerHTML = "";
+
+for(let i = 1; i <= 395; i++) {
+
+let item = document.createElement("div");
+
+item.className = "article-item";
+
+item.innerText = "Article " + i;
+
+item.onclick = function() {
+
+document.getElementById("searchArticle").value = i;
+
+findArticle();
+
+};
+
+list.appendChild(item);
+
+}
+
+}
+
+
+// ARTICLE SEARCH
+
+function findArticle() {
+
+let number = document.getElementById("searchArticle").value;
+
+let details = document.getElementById("articleDetails");
+
+if(number < 1 || number > 395 || !Number.isInteger(Number(number))) {
+
+details.innerHTML = "<p>Please enter a valid Article number.</p>";
+
+return;
+
+}
+
+let articles = {
+
+1: "Name and territory of the Union.",
+2: "Admission or establishment of new States.",
+3: "Formation of new States and alteration of areas, boundaries or names of existing States.",
+14: "Equality before law.",
+19: "Protection of certain rights regarding freedom of speech and other freedoms.",
+21: "Protection of life and personal liberty.",
+21A: "Right to education.",
+32: "Remedies for enforcement of Fundamental Rights."
+
+};
+
+details.innerHTML = `
+<div class="card">
+<h3>Article ${number}</h3>
+<p>
+${articles[number] || "Article " + number + " selected. Its verified constitutional text and explanation can be added to the article database."}
+</p>
+</div>
+`;
+
+}
+
+
+// UPLOAD PREVIEW
+
+function uploadKnowledge(event) {
+
+event.preventDefault();
+
+let file = document.getElementById("media").files[0];
+
+let name = document.getElementById("username").value;
+
+let description = document.getElementById("description").value;
+
+if(!file) return;
+
+let preview = document.getElementById("preview");
+
+let url = URL.createObjectURL(file);
+
+let mediaElement = "";
+
+if(file.type.startsWith("image/")) {
+
+mediaElement = `<img src="${url}" width="100%" style="margin-top:15px;border-radius:10px;">`;
+
+}
+
+else if(file.type.startsWith("video/")) {
+
+mediaElement = `<video src="${url}" width="100%" controls style="margin-top:15px;"></video>`;
+
+}
+
+preview.innerHTML = `
+<div class="card">
+<h3>Preview of Your Knowledge</h3>
+<p><b>Name:</b> ${escapeHTML(name)}</p>
+<p>${escapeHTML(description)}</p>
+${mediaElement}
+<p>Preview created successfully!</p>
+</div>
+`;
+
+}
+
+function escapeHTML(text) {
+
+return text.replace(/[&<>"']/g, function(character) {
+
+return {
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#039;'
+
+}[character];
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
