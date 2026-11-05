@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Constitution Knowledge Community</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f4f8;
+}
+
+header {
+    background: #102c54;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+}
+
+header h1 {
+    margin: 5px;
+}
+
+.container {
+    max-width: 750px;
+    margin: auto;
+    padding: 15px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+h2 {
+    color: #102c54;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 7px;
+    background: #102c54;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e68a22;
+}
+
+.post {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.post img, .post video {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 12px;
+}
+
+.post h3 {
+    color: #102c54;
+}
+
+.status {
+    text-align: center;
+    padding: 10px;
+    color: #102c54;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🇮🇳 CONSTITUTION COMMUNITY</h1>
+
+<p>Share Knowledge | Learn Constitution | Educate India</p>
+
+</header>
+
+
+<div class="container">
+
+<!-- UPLOAD SECTION -->
+
+<div class="card">
+
+<h2>📤 Upload Constitution Knowledge</h2>
+
+<p>
+Share your knowledge about the Indian Constitution
+with people across India.
+</p>
+
+<form id="uploadForm">
+
+<input
+type="text"
+id="username"
+placeholder="Enter Your Name"
+required
+maxlength="60"
+>
+
+<textarea
+id="description"
+placeholder="Write about Constitution..."
+required
+maxlength="2000"
+></textarea>
+
+<label><b>Select Photo or Video</b></label>
+
+<input
+type="file"
+id="media"
+accept="image/jpeg,image/png,image/webp,video/mp4,video/webm"
+required
+>
+
+<button type="submit" id="uploadBtn">
+
+Upload Knowledge
+
+</button>
+
+</form>
+
+<p class="status" id="uploadStatus"></p>
+
+</div>
+
+
+<!-- COMMUNITY FEED -->
+
+<div class="card">
+
+<h2>🌐 Constitution Knowledge Community</h2>
+
+<p>
+Posts shared by people across India.
+</p>
+
+<div id="feed">
+
+Loading Community Posts...
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer class="status">
+
+<p>Indian Constitution Knowledge Platform</p>
+
+<p>Learn Your Rights | Respect Your Constitution</p>
+
+</footer>
+
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import {
+initializeApp
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+addDoc,
+query,
+orderBy,
+onSnapshot,
+serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+import {
+getStorage,
+ref,
+uploadBytes,
+getDownloadURL
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
+
+import {
+getAuth,
+signInAnonymously
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+
+// FIREBASE CONFIGURATION
+
+const firebaseConfig = {
+
+apiKey: "YOUR_API_KEY",
+
+authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+
+projectId: "YOUR_PROJECT_ID",
+
+storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
+
+messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+
+appId: "YOUR_APP_ID"
+
+};
+
+
+// INITIALIZE FIREBASE
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const storage = getStorage(app);
+
+const auth = getAuth(app);
+
+
+// SIGN IN ANONYMOUSLY
+
+let currentUser = null;
+
+try {
+
+const result = await signInAnonymously(auth);
+
+currentUser = result.user;
+
+} catch(error) {
+
+console.error(error);
+
+document.getElementById("uploadStatus").textContent =
+"Connection error. Please try again later.";
+
+}
+
+
+// UPLOAD SYSTEM
+
+const form = document.getElementById("uploadForm");
+
+form.addEventListener("submit", async function(event) {
+
+event.preventDefault();
+
+if(!currentUser) {
+
+alert("Please wait for connection.");
+
+return;
+
+}
+
+const name =
+document.getElementById("username").value.trim();
+
+const description =
+document.getElementById("description").value.trim();
+
+const file =
+document.getElementById("media").files[0];
+
+const status =
+document.getElementById("uploadStatus");
+
+const button =
+document.getElementById("uploadBtn");
+
+
+if(!file) return;
+
+const allowedTypes = [
+"image/jpeg",
+"image/png",
+"image/webp",
+"video/mp4",
+"video/webm"
+];
+
+if(!allowedTypes.includes(file.type)) {
+
+alert("Only JPG, PNG, WEBP, MP4 and WEBM files allowed.");
+
+return;
+
+}
+
+if(file.size > 20 * 1024 * 1024) {
+
+alert("File size must be below 20 MB.");
+
+return;
+
+}
+
+button.disabled = true;
+
+status.textContent = "Uploading... Please wait.";
+
+try {
+
+const fileName =
+Date.now() + "_" + file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+
+const filePath =
+"community/" + currentUser.uid + "/" + fileName;
+
+const storageRef = ref(storage, filePath);
+
+
+// UPLOAD FILE TO FIREBASE STORAGE
+
+await uploadBytes(storageRef, file, {
+contentType: file.type
+});
+
+
+// GET PUBLIC FILE URL
+
+const downloadURL =
+await getDownloadURL(storageRef);
+
+
+// SAVE POST IN FIRESTORE
+
+await addDoc(collection(db, "communityPosts"), {
+
+name: name,
+
+description: description,
+
+mediaURL: downloadURL,
+
+mediaType: file.type.startsWith("image/")
+? "image" : "video",
+
+storagePath: filePath,
+
+userId: currentUser.uid,
+
+createdAt: serverTimestamp()
+
+});
+
+
+status.textContent = "Your post has been uploaded successfully!";
+
+form.reset();
+
+} catch(error) {
+
+console.error(error);
+
+status.textContent =
+"Upload failed. Please check Firebase settings.";
+
+} finally {
+
+button.disabled = false;
+
+}
+
+});
+
+
+// SHOW ALL COMMUNITY POSTS
+
+const postsQuery = query(
+
+collection(db, "communityPosts"),
+
+orderBy("createdAt", "desc")
+
+);
+
+
+onSnapshot(postsQuery, function(snapshot) {
+
+const feed = document.getElementById("feed");
+
+feed.innerHTML = "";
+
+if(snapshot.empty) {
+
+feed.textContent =
+"No posts yet. Be the first to share knowledge!";
+
+return;
+
+}
+
+
+snapshot.forEach(function(documentSnapshot) {
+
+const post = documentSnapshot.data();
+
+const card = document.createElement("div");
+
+card.className = "post";
+
+
+const title = document.createElement("h3");
+
+title.textContent = post.name;
+
+card.appendChild(title);
+
+
+const description = document.createElement("p");
+
+description.textContent = post.description;
+
+card.appendChild(description);
+
+
+let media;
+
+if(post.mediaType === "image") {
+
+media = document.createElement("img");
+
+} else {
+
+media = document.createElement("video");
+
+media.controls = true;
+
+media.preload = "metadata";
+
+}
+
+media.src = post.mediaURL;
+
+media.loading = "lazy";
+
+card.appendChild(media);
+
+
+feed.appendChild(card);
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
